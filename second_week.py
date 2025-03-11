@@ -131,7 +131,16 @@ value = "hi"
 my_dict = {key:value}
 
 print("\nset")
-my_set={1,2,3,4,5} #집합 연산시에 자주 씁니다.
+my_set={1,2,3,4,5} #집합 연산시에 자주 씁니다. 유니크한 값들을 뽑을때 사용함
+
+print("\ntuple")
+my_value = (10) #그냥 10입니다.
+my_tuple1 = (10,) #1개짜리 값 tuple, 인수로 튜플을 넣어야 동작할때 사용한다.
+my_tuple2 = (10,3,4) #3개짜리 튜플
+my_tuple2[0] #인덱싱가능
+
+
+
 
 
 
