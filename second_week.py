@@ -164,6 +164,13 @@ def print_summation(x,y):
     print(x+y)
 
 
+#**python에서는 return을 할 수도 있고 안할 수도 있는 함수를 만들 수 있습니다.
+def summation_return_or_not(x,y,PLOT=True): # PLOT=True라는 것은 default value이다.
+    if PLOT:
+        return x+y
+    else:
+        print(x+y)
+
 #%%주석으로 세션 나누는법 : #%%사용
 
 #레포트 작성시 #%%을 사용하여 다음과 같이 나눕니다. (예시)
@@ -189,6 +196,14 @@ if __name__=="__main__":
     print(my_sum(x,y))
     print(my_sum(y,x))
     
+    
+    #%%지역변수와 전역변수
+    ##전역변수
+    x=[]
+    
+    if (x==[]):
+        ##지역변수
+        y=x
     
 
 
