@@ -140,9 +140,56 @@ my_tuple2 = (10,3,4) #3개짜리 튜플
 my_tuple2[0] #인덱싱가능
 
 
+#------------------------
 
 
+#%%함수(function)
 
+#return이 있는 함수 형식
+##인수가 없는 함수 형식
+def my_process():
+    return 10
+
+##인수가 있는 함수 형식
+def func(*args,**kwargs):
+    something = my_process();
+    return something
+
+#return이 없는 함수
+##인수가 없는
+def void_func():
+    print("this is void function")
+#인수가 있는
+def print_summation(x,y):
+    print(x+y)
+
+
+#%%주석으로 세션 나누는법 : #%%사용
+
+#레포트 작성시 #%%을 사용하여 다음과 같이 나눕니다. (예시)
+
+#%% import
+
+import numpy as np
+
+
+#%% definitions classes
+
+def my_sum(x,y):
+    return x+y
+
+#%% main body
+
+if __name__=="__main__":
+    ##변수 선언 <-이렇게 하면 값을 쉽게 변경할 수 있습니다.
+    x=1
+    y=2
+    
+    ##process1
+    print(my_sum(x,y))
+    print(my_sum(y,x))
+    
+    
 
 
 
