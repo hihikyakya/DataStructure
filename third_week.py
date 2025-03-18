@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-#%%모듈:함수의 집합
-
-
 #%%라이브러리 파트
+##모듈:함수의 집합
 #import second_week
 #import second_week as sw
 from second_week import summation_return_or_not #summation_return_or_not 하나만 갖고 온다.
 #from second_week import * #from second_wekk import [ALL]: 해당 모듈의 모든 정의를 들고옵니다.
+
 #%%정의 파트
 
 #class
@@ -35,7 +34,7 @@ class Car:
         
 
 
-#직접 해보기
+#클래스 실습
 class Employee:
     def __init__(self,name,years_from_being_employee,has_degree=False):
         self.name=name
@@ -55,7 +54,7 @@ class Employee:
             return 3000+ self.years_from_being_employee*100
         elif self.rank=="대리":
             return 3100+ self.years_from_being_employee*110
-        return 4000+ self.years_from_being_employee*130
+        return 4000+ self.years_from_being_employee*130 #단순 return 문에서는 else를 안써도 같은 방향으로 동작합니다.
     
     def get_rank(self):
         if self.years_from_being_employee<=5:
@@ -63,7 +62,14 @@ class Employee:
         elif self.years_from_being_employee<=10:
             return "대리"
         return "과장"
+
+#상속
+class HyendaiCar(Car):
+    def __init__(self,n_wheels,n_windows,n_lights,color="black"):
+        super().__init__(n_wheels, n_windows, n_lights,color)
         
+    def move(self): #method overidding
+        self.velocity+=2
 #%%main body
 
 if __name__ == "__main__":
@@ -80,8 +86,26 @@ if __name__ == "__main__":
     
     Car.change_color()
     
-    employee1=Employee("철수",7,True)
-    employee2=Employee("yasuo",1,False)
+    employee1=Employee("철수",7,True) #철수 회사원 객체 생성
+    employee2=Employee("yasuo",1,False) #야스오 회사원 객체 생성
     
     employee1.print_name_and_annual_salary()
     employee2.print_name_and_annual_salary()
+    
+    #debugging용
+    print(employee1.rank)
+    print(employee2.rank) 
+    
+    car2 = HyendaiCar(4, 4, 4, "Black")
+    car2.move()
+    print(car2.velocity)
+    
+    ##내장함수:클래스로 구성
+    
+    print(abs(-x)) #절대값 출력
+    
+    #list와 불리언
+    l=[0,2,3,4]
+    print(all(l))
+    print(any(l))
+    
