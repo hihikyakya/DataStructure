@@ -167,9 +167,9 @@ def print_summation(x,y):
 #**python에서는 return을 할 수도 있고 안할 수도 있는 함수를 만들 수 있습니다.
 def summation_return_or_not(x,y,PLOT=True): # PLOT=True라는 것은 default value이다.
     if PLOT:
-        return x+y
-    else:
         print(x+y)
+    else:
+        return x+y
 
 #%%주석으로 세션 나누는법 : #%%사용
 
