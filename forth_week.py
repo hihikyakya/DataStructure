@@ -24,7 +24,7 @@ if __name__=="__main__":
     heights=np.array([1.83,1.76,1.69,1.86,1.77,1.73])
     weights=np.array([86,74,59,95,80,68])
 
-    BMI=weights/(heights@heights.T)
+    BMI=weights/(heights**2) #요소곱과 행렬곱을 헷갈리지 맙시다.
     print(f"사람 {heights.shape[0]}명의 BMI지수는 다음과 같습니다....",*np.round(BMI,3),"(kg/m^2)")
     
     ##np.arange와 np.linspace
