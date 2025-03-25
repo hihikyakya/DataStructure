@@ -179,11 +179,19 @@ if __name__ == "__main__":
     #***2번째 레포트
     questions=[] #질문 10개
     answers = []
+    results = [] #채점결과 저장
     for i in range(len(questions)):
-        answers.append(int(input(questions[random.randint(0,len(questions))]))) #**비복원추출로 수정필요
+        random_num=random.randint(0,len(questions))
+        answers.append(int(input(questions[random_num]))) #**비복원추출로 수정필요
     
-    #채점하기
-    
+        #채점하기
+        # results.append(check_answers(questions[random_num],answers[random_num]))
     #파일 저장
-    with open("file.db","+wb") as f:
-        pickle.dump(f)
+    with open("C:\\answer\\answer.bin","+wb") as f:
+        pickle.dump(results,f)
+        
+    #파일 존재 여부 체크
+    
+    #파일 로드 체크
+        
+    
