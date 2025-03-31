@@ -45,5 +45,5 @@ if __name__=="__main__":
     
     
     #pandas
-    #titanic = pd.read_csv("pandas\\titanic.csv") 
+    titanic = pd.read_csv("pandas\\titanic.csv") 
     
