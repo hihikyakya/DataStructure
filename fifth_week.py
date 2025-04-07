@@ -59,4 +59,4 @@ if __name__ == "__main__":
     selective_sort_recurcive(A,callback=lambda x,idx,target_idx: x[idx] > x[target_idx])
     print(A)     
     
-    #귀납적 사고
+    #귀납적 사고가 중요하다.
