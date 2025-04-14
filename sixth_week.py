@@ -91,4 +91,6 @@ if __name__=="__main__":
     
     print(linked_list.next_link().prev_link().next_link().node.value)
     
+    #-----------------
+    
     
