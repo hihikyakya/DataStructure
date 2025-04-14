@@ -53,6 +53,46 @@ class LinkedList:
     
     def __len__(self):
         return self.length
+    
+    
+
+#스택 구현
+class ArrayStack:
+    def __init__(self, capacity):
+        self.capacity = capacity #스택 상자 높이
+        self.array=[None]*self.capacity #스택공간 생성
+        self.top=-1
+    
+    def isEmpty(self):
+        return self.top==-1 #초기상태는 비어있다.
+    def isFull(self):
+        return self.top==self.capacity-1 #capacity-1가 최대주소번지니까 가장 위의 주소번지가 최대주소번지와 같으면 꽉 찬 것이다.
+    
+    def push(self, e):
+        if not self.isFull(): #차있는지 확인하고 넣는다.
+            self.top+=1
+            self.array[self.top] = e
+        else:
+            pass #이때 넣으면 오버플로우
+    def pop(self):
+        if not self.isEmpty():
+            self.top-=1
+            tmp=self.array[self.top+1]
+            self.array[self.top+1]=None
+            return tmp
+        else:
+            pass #이때 빼면 언더플로우
+    def peek(self):
+        if not self.isEmpty():
+            return self.array[self.top]
+        else:
+            pass
+        
+    
+    
+    
+    
+    
 #%% main body
 if __name__=="__main__":
     #aa=[]와 aa[]의 차이점=>대입연산자, =[]은 리스트 값으로 부여, aa[]는 인덱스 연산자
@@ -93,4 +133,13 @@ if __name__=="__main__":
     
     #-----------------
     #스택에 대하여 배움
+    
+    #가상으로 스택을 만듦
+    
+    ##문자열 뒤집기 가능
+    ##괄호검사도 편리하다. 
+    
+    ##자세한 구현은 내일 7주차에 한다.
+    
+    
     
