@@ -78,7 +78,7 @@ class ArrayStack:
         if not self.isEmpty():
             self.top-=1
             tmp=self.array[self.top+1]
-            self.array[self.top+1]=None
+            del self.array[self.top+1]
             return tmp
         else:
             pass #이때 빼면 언더플로우
