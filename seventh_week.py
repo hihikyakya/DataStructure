@@ -22,9 +22,7 @@ class ArrayStack:
         if not self.isEmpty():
             self.top-=1
             tmp=self.array[self.top+1]
-            del self.array[self.top+1]
-            
-            #여기 오류있음.
+            self.array[self.top+1]=None #del사용시는 array length도 줄어서 코드가 다 꼬임. stack은 고정크기 배열을 사용한다는 것을 주의하자.
             return tmp
         else:
             pass #이때 빼면 언더플로우
@@ -84,44 +82,28 @@ if __name__=="__main__":
     
     
     #postfix
-    postfix="123*+"
+    postfix="9472/*+" #((7/2)*4)+9
     
     stack4=ArrayStack(len(postfix))
 
-    for p in postfix:
-        stack4.push(p)
-    
+    #연산방법: 숫자인경우 push, 연산자인경우에 pop 2번해서 계산
     first_value=None
     second_value=None
-    operator=None
-    
-    while(not stack4.isEmpty()):
-        for i in range(stack4.capacity):
-            v=stack4.pop()
-            if v not in "1234567890":
-                if operator==None:
-                    operator=v
-                else:
-                    stack4.push(v)
-            else:
-                if first_value==None and second_value==None:
-                    second_value=int(v)
-                elif first_value==None:
-                    first_value=int(v)
-            
-            if first_value!=None and second_value!=None and operator!=None:
-                print(first_value,operator,second_value)
-                if operator=="*":
-                    first_value=first_value*second_value
-                elif operator=="+":
-                    first_value=first_value+second_value
-                
-                second_value=None
-                operator=None
-        
-    
-    print(first_value)
-    
-    
+    for p in postfix:
+        if p in "1234567890":
+            stack4.push(int(p))
+        else:
+            second_value=stack4.pop()
+            first_value=stack4.pop()
+            if p=="*":
+                stack4.push(first_value*second_value)   
+            elif p=="-":
+                stack4.push(first_value-second_value)   
+            elif p=="+":
+                stack4.push(first_value+second_value)   
+            elif p=="/":
+                stack4.push(first_value/second_value)  
+        print(stack4.peek())
+    print(stack4.pop())
     
         
