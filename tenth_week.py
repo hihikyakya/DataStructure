@@ -6,18 +6,27 @@ class ArrayList:
     def append(self,x)->None:
         self.list+=[x];
     def pop(self,i):
+        if len(self.list)==0:
+            raise IndexError("삭제가능한 요소가 없습니다.")
+        
         temp=self.list[i]
         del self.list[i]
         return temp
     def remove(self, x):
+        if len(self.list)==0:
+            raise IndexError("삭제가능한 요소가 없습니다.")
         for i,a in enumerate(self.list):
             if a==x:
                 del self.list[i]
     def index(self, x):
+        if len(self.list)==0:
+            raise IndexError("빈 리스트")
         for i,a in enumerate(self.list):
             if a==x:
                 return i
     def extend(self, a):
+        if len(a)==0:
+            raise IndexError("빈 iterable 요소")
         for _x in a:
             self.append(_x)
     def clear(self):
