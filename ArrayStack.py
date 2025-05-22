@@ -42,4 +42,4 @@ class ArrayStack:
 	def is_overflow(self):
 		return self.top+1>=self.max_size
 	def is_underflow(self):
-		return self.top<=-
+		return self.top<=self.max_size
