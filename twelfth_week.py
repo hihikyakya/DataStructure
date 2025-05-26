@@ -38,8 +38,80 @@ class WebBrowser:
 				print("잘못된 명령어")
 				continue
 			print("현재 페이지:", self.arrayStack.peek())
+            
+
+##linear queue
+class Queue:
+    def __init__(self,capacity):
+        self.queue=[]
+        self.front=0
+        self.back=0
+        self.capacity=capacity
+        if self.queue==None:
+            self.queue=[]
+    def enqueue(self,e):
+        if self.isFull():
+            raise Exception("꽉차서 더 못 넣음")
+        self.queue.append(e)
+        self.back+=1
+    def dequeue(self):
+        if self.isEmpty():
+            raise Exception("비어서 더 못 꺼냄")
+        temp=self.queue[self.front]
+        self.queue[self.front]=None
+        self.front+=1
+        if self.isEmpty():
+            self.front=0
+            self.back=0
+            self.queue=[]
+        return temp
+    def isEmpty(self):
+        return self.front==self.back
+    def isFull(self):
+        return self.back+1==self.capacity
+    def peek(self):
+        if self.isEmpty():
+            raise Exception("비어서 더 못 꺼냄")
+        return self.queue[self.front]
+    def size(self):
+        return self.back+1
 
 #%% main body
 if __name__=="__main__":
-	webBrowser=WebBrowser(ArrayStack(255))
-	webBrowser.run()
+	# webBrowser=WebBrowser(ArrayStack(255))
+	# webBrowser.run()
+    queue=Queue(10)
+    queue.enqueue(10)
+    print(queue.queue)
+    queue.enqueue(12)
+    print(queue.queue)
+    queue.dequeue()
+    print(queue.queue)
+    queue.enqueue(1)
+    print(queue.queue)
+    queue.dequeue()
+    print(queue.queue)
+    print(queue.front)
+    print(queue.back)
+    queue.dequeue()
+    print(queue.queue)
+    print(queue.isEmpty())
+    print(queue.front)
+    print(queue.back)
+    
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    queue.enqueue(4)
+    queue.enqueue(5)
+    print(queue.queue)
+    queue.dequeue()
+    print(queue.queue)
+    queue.dequeue()
+    print(queue.queue)
+    queue.dequeue()
+    print(queue.queue)
+    queue.dequeue()
+    print(queue.queue)
+    queue.dequeue()
+    print(queue.queue)
