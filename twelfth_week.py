@@ -43,16 +43,14 @@ class WebBrowser:
 ##linear queue
 class Queue:
     def __init__(self,capacity):
-        self.queue=[]
+        self.queue=[None]*capacity
         self.front=0
         self.back=0
         self.capacity=capacity
-        if self.queue==None:
-            self.queue=[]
     def enqueue(self,e):
         if self.isFull():
             raise Exception("꽉차서 더 못 넣음")
-        self.queue.append(e)
+        self.queue[self.back]=e
         self.back+=1
     def dequeue(self):
         if self.isEmpty():
@@ -75,12 +73,42 @@ class Queue:
         return self.queue[self.front]
     def size(self):
         return self.back+1
+    
+##circular queue
+class CircularQueue:
+    def __init__(self,capacity):
+        self.queue=[None]*capacity
+        self.front=0
+        self.rear=0
+        self.capacity=capacity
+    def enqueue(self,e):
+        if self.isFull():
+            raise Exception("꽉차서 더 못 넣음")
+        self.queue[self.rear]=e
+        self.rear=(self.rear+1) % self.capacity
+    def dequeue(self):
+        if self.isEmpty():
+            raise Exception("비어서 더 못 꺼냄")
+        temp=self.queue[self.front]
+        self.queue[self.front]=None
+        self.front=(self.front+1) % self.capacity
+        return temp
+    def isEmpty(self):
+        return self.front==self.rear
+    def isFull(self):
+        return self.front==(self.rear+1) % self.capacity
+    def peek(self):
+        if self.isEmpty():
+            raise Exception("비어서 더 못 꺼냄")
+        return self.queue[self.front]
+    def size(self):
+        return (self.rear+1)
 
 #%% main body
 if __name__=="__main__":
 	# webBrowser=WebBrowser(ArrayStack(255))
 	# webBrowser.run()
-    queue=Queue(10)
+    queue=CircularQueue(10)
     queue.enqueue(10)
     print(queue.queue)
     queue.enqueue(12)
@@ -92,12 +120,12 @@ if __name__=="__main__":
     queue.dequeue()
     print(queue.queue)
     print(queue.front)
-    print(queue.back)
+    print(queue.rear)
     queue.dequeue()
     print(queue.queue)
     print(queue.isEmpty())
     print(queue.front)
-    print(queue.back)
+    print(queue.rear)
     
     queue.enqueue(1)
     queue.enqueue(2)
