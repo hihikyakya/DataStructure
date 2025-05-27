@@ -120,12 +120,18 @@ if __name__=="__main__":
     queue.dequeue()
     print(queue.queue)
     print(queue.front)
-    print(queue.rear)
+    if isinstance(queue,CircularQueue):
+        print(queue.rear)
+    elif isinstance(queue,Queue):
+        print(queue.back)
     queue.dequeue()
     print(queue.queue)
     print(queue.isEmpty())
     print(queue.front)
-    print(queue.rear)
+    if isinstance(queue,CircularQueue):
+        print(queue.rear)
+    elif isinstance(queue,Queue):
+        print(queue.back)
     
     queue.enqueue(1)
     queue.enqueue(2)
