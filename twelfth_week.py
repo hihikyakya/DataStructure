@@ -49,19 +49,19 @@ class Queue:
         self.capacity=capacity
     def enqueue(self,e):
         if self.isFull():
-            raise Exception("꽉차서 더 못 넣음")
+            raise IndexError("꽉차서 더 못 넣음")
         self.queue[self.back]=e
         self.back+=1
     def dequeue(self):
         if self.isEmpty():
-            raise Exception("비어서 더 못 꺼냄")
+            raise IndexError("비어서 더 못 꺼냄")
         temp=self.queue[self.front]
         self.queue[self.front]=None
         self.front+=1
         if self.isEmpty():
             self.front=0
             self.back=0
-            self.queue=[]
+            self.queue=[None]*self.capacity
         return temp
     def isEmpty(self):
         return self.front==self.back
@@ -69,10 +69,10 @@ class Queue:
         return self.back+1==self.capacity
     def peek(self):
         if self.isEmpty():
-            raise Exception("비어서 더 못 꺼냄")
+            raise IndexError("비어서 더 못 꺼냄")
         return self.queue[self.front]
     def size(self):
-        return self.back+1
+        return self.back-self.front
     
 ##circular queue
 class CircularQueue:
@@ -83,12 +83,12 @@ class CircularQueue:
         self.capacity=capacity
     def enqueue(self,e):
         if self.isFull():
-            raise Exception("꽉차서 더 못 넣음")
+            raise IndexError("꽉차서 더 못 넣음")
         self.queue[self.rear]=e
         self.rear=(self.rear+1) % self.capacity
     def dequeue(self):
         if self.isEmpty():
-            raise Exception("비어서 더 못 꺼냄")
+            raise IndexError("비어서 더 못 꺼냄")
         temp=self.queue[self.front]
         self.queue[self.front]=None
         self.front=(self.front+1) % self.capacity
@@ -99,10 +99,36 @@ class CircularQueue:
         return self.front==(self.rear+1) % self.capacity
     def peek(self):
         if self.isEmpty():
-            raise Exception("비어서 더 못 꺼냄")
+            raise IndexError("비어서 더 못 꺼냄")
         return self.queue[self.front]
     def size(self):
-        return (self.rear+1)
+        if self.rear<self.front:
+            return (self.rear+self.capacity)-self.front
+        
+        return (self.rear-self.front)
+
+
+class ListQueue:
+    def __init__(self):
+        self.queue=[]
+        self.front=0
+        self.rear=0
+    def enqueue(self,e):
+        self.queue.append(e)
+    def dequeue(self):
+        if self.isEmpty():
+            raise IndexError("비어서 더 못 꺼냄")
+        temp=self.queue.pop(0)
+        return temp
+    def isEmpty(self):
+        return len(self.queue)==0
+
+    def peek(self):
+        if self.isEmpty():
+            raise IndexError("비어서 더 못 꺼냄")
+        return self.queue[0]
+    def size(self):
+        return len(self.queue)
 
 #%% main body
 if __name__=="__main__":
